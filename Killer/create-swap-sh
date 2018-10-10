@@ -1,0 +1,8 @@
+#!/bin/bash
+
+sudo swapoff -a
+sudo rm /swapfile 
+sudo dd if=/dev/zero of=/swapfile bs=1024 count=$1
+sudo mkswap /swapfile 
+sudo swapon /swapfile 
+free -h -m
