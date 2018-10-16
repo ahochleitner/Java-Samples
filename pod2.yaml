@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sharevol
+spec:
+  volumes:
+    # List of volumes to use, i.e. *what* to mount
+    - name: myvolume
+      myvolume:myvolume
+    - name: mysecondvolume
+      mysecondvolume:mysecondvolume
+
+  containers:
+    - name: mycontainer
+    image: centos:7
+    command:
+      - "bash"
+      - "-c"
+      - "sleep 10000"
+      volumeMounts:
+        # List of mount directories, i.e. *where* to mount
+        # We want to mount 'myvolume' into /usr/share/nginx/html
+        - name: myvolume
+          mountPath: /usr/share/nginx/html/
+        # We want to mount 'mysecondvolume' into /var/log
+        - name: mysecondvolume
+          mountPath: /var/log/
+    resources:
+      limits:
+        cpu: 500m
+        memory: 1Gi

@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: openjdk
+spec:
+  containers:
+  - name: openjdk
+    env:
+    - name: "JAVA_ENABLE_DEBUG"
+      value: "true"
+    - name: "KUBERNETES_NAMESPACE"
+      valueFrom:
+        fieldRef:
+          fieldPath: "metadata.namespace"
+    image: openjdk:8
+    command:
+      - "bash"
+      - "-c"
+      - "sleep 10000"
+#    ports:
+#    - containerPort: 80
+    ports:
+    - containerPort: 5005
+      name: "jvm-debug"
+    - containerPort: 8778
+      name: "jolokia"
+    resources:
+      limits:
+#        cpu: 500m
+        cpu: 5
+        memory: 512Mi
+#        memory: 1Gi
+  nodeSelector:
+    kubernetes.io/hostname: widk8s15
+
