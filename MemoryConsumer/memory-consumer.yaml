@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: memory-consumer
+spec:
+  containers:
+  - name: memory-consumer-container
+    env:
+    - name: "JAVA_ENABLE_DEBUG"
+      value: "true"
+    - name: "KUBERNETES_NAMESPACE"
+      valueFrom:
+        fieldRef:
+          fieldPath: "metadata.namespace"
+    image: dev-registry.artifactory.prod.lkw-walter.com/andy/memory_consumer:latest
+    imagePullPolicy: Always
+    ports:
+    - containerPort: 5005
+      name: "jvm-debug"
+    - containerPort: 8778
+      name: "jolokia"
+    resources:
+#      requests:
+      limits:
+        cpu: 2
+        memory: "2Gi"
+#        cpu: 25
+#        memory: "70Gi"
+    env:
+      - name: JVM_OPTS
+        value: "-Xmx20G -Xms64M -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.port=1099 -Dcom.sun.management.jmxremote.rmi.port=1099 -Djava.rmi.server.hostname=127.0.0.1"
+#        value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -Xms64M"
+  restartPolicy: Never
+  nodeSelector:
+    kubernetes.io/hostname: widk8s18
+
