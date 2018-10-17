@@ -1,4 +1,5 @@
 import java.util.Vector;
+import java.util.Set;
 
 public class MemoryConsumer {
 
@@ -9,7 +10,8 @@ public class MemoryConsumer {
 
     public static void main(String[] args) throws Exception {
 	System.out.println("Schlafen");
-	Thread.sleep(30000);
+	getThreadInfo();
+	Thread.sleep(60000);
 	System.out.println("Schlafen beendet");
         Runtime rt = Runtime.getRuntime();
 
@@ -42,6 +44,21 @@ public class MemoryConsumer {
         System.out.println("Free memory: " + freeMemBytes/ONE_MB + "MB");
 	System.out.println("alloc loop duration " + (end - start)/1000);
 	System.out.println("Everything is OK");
+	Thread.sleep(60000);
+	getThreadInfo();
+	System.out.println("Finish");
+    }
+
+    public static void getThreadInfo() {
+        Set<Thread> threads = Thread.getAllStackTraces().keySet();
+
+        for (Thread t : threads) {
+            String name = t.getName();
+            Thread.State state = t.getState();
+            int priority = t.getPriority();
+            String type = t.isDaemon() ? "Daemon" : "Normal";
+            System.out.printf("%-20s \t %s \t %d \t %s\n", name, state, priority, type);
+        }
     }
 }
 
