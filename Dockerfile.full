@@ -1,0 +1,12 @@
+FROM openjdk:10
+
+ADD MemoryConsumer/memory_consumer.jar /opt/local/jars/memory_consumer.jar
+ADD MemoryConsumer/istThreads.sh /opt/local/listThreads.sh
+ADD Killer/Killer.java /opt/local/Killer.java
+ADD Killer/Killer7.java /opt/local/Killer7.java
+ADD OOM.java /opt/local/OOM.java
+ADD Main.java /opt/local/Main.java
+ADD MemEat.java /opt/local/MemEat.java
+
+#CMD java $JVM_OPTS -cp /opt/local/jars/memory_consumer.jar MemoryConsumer
+CMD bash
