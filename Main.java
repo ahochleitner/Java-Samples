@@ -10,9 +10,10 @@ public class Main {
       Runtime ri = Runtime.getRuntime();
       
       System.out.println("avaiable Processors: " + ri.availableProcessors());
+      System.out.println("");
       System.out.println("freeMemory: " + format(ri.freeMemory()));
       System.out.println("totalMemory: " + format(ri.totalMemory()));
-      System.out.println("maxMemory: " + format(ri.maxMemory()));
+      System.out.println("maxMemory (-Xmx): " + format(ri.maxMemory()));
   }
 
   public static String format(long in) {
