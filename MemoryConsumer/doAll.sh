@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#javac MemoryConsumer.java  -source 1.7 -target 1.7
 javac MemoryConsumer.java 
 jar cf memory_consumer.jar MemoryConsumer.class 
 

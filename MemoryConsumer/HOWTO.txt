@@ -1,0 +1,5 @@
+
+docker build -t my_mem_alloc .
+
+docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openjdk:7 javac Main.java
+docker run --rm -d my_mem_alloc
