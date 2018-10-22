@@ -3,7 +3,8 @@ import java.util.Set;
 
 public class MemoryConsumer {
 
-    private static float CAP = 0.8f;  // 80%
+    //private static float CAP = 0.8f;  // 80%
+    private static float CAP = 0.7f;  // 70%
     private static int ONE_MB = 1024 * 1024;
 
     private static long SLEEP_TIME=2000;
