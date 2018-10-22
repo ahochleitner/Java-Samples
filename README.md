@@ -10,6 +10,7 @@ docker run --rm -it -v "$PWD":/usr/src/myapp -w /usr/src/myapp openjdk:7 bash
 kubectl run busybox --image=busybox --restart=Never --tty -i  --limits cpu=500m,memory=1Gi
 
 
+kubectl run jdk --image=openjdk:10 --restart=Never --tty -i --limits cpu=2,memory=2Gi --name myjdk
 kubectl run jdk --image=openjdk:8 --restart=Never --tty -i --limits cpu=500m,memory=1Gi
 kubectl run jdk --image=openjdk:8 --restart=Always --tty -i --limits cpu=500m,memory=512Mi
 
