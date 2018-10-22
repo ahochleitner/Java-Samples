@@ -1,6 +1,6 @@
 #!/bin/bash
 
-JAVA_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+#JAVA_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
 
 if [ "$#" != "1" ]; then
   echo "usage: $0 JavaClass"

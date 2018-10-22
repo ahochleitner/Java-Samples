@@ -1,5 +1,5 @@
 public class CpuBench {
-  static long ITERATIONS = 100000000;
+  static long ITERATIONS = 50000000;
   public static void main(String[] argv)
   throws Exception
   {
