@@ -7,9 +7,15 @@ jstack $1 | grep ^\"
 echo
 
 echo "======================================"
-echo -n "GC tasks "
-jstack $1 | grep ^\" | grep "GC task" | wc -l
-jstack $1 | grep ^\" | grep "GC task"
+echo -n "GC  "
+jstack $1 | grep ^\" | grep "GC " | wc -l
+jstack $1 | grep ^\" | grep "GC "
+echo
+
+echo "======================================"
+echo -n "G1 "
+jstack $1 | grep ^\" | grep "G1 " | wc -l
+jstack $1 | grep ^\" | grep "G1 "
 echo
 
 echo "======================================"
