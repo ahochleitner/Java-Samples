@@ -3,9 +3,11 @@ import java.util.Set;
 
 public class HelloWorld {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+	Thread.sleep(20000);
         System.out.println("Hello World");
         getThreadInfo();
+	Thread.sleep(20000);
     }
 
     public static void getThreadInfo1() {
