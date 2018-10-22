@@ -3,6 +3,7 @@ public class CpuBench {
   public static void main(String[] argv)
   throws Exception
   {
+      System.out.println("Start with the CpuBench-Test");
       long start = System.currentTimeMillis();
       for (int ii = 0 ; ii < ITERATIONS ; ii++)
       {
