@@ -19,7 +19,7 @@ jstack $1 | grep ^\" | grep "G1 "
 echo
 
 echo "======================================"
-echo -n "CompierThreads "
+echo -n "CompilerThreads "
 jstack $1 | grep ^\" | grep "CompilerThread" | wc -l
 jstack $1 | grep ^\" | grep "CompilerThread"
 echo
